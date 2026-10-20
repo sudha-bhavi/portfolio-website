@@ -1,16 +1,49 @@
-# React + Vite
+# Sudharani Bhavi | Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio for a Senior .NET engineer working in healthcare IT.
+**Live site:** https://sudhabhavi-portfolio.netlify.app/
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+React 19 · Vite · Tailwind CSS v4 · Nginx (Docker) · Netlify
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Responsive single-page layout with sticky navigation and scroll-reveal animations
+- Experience timeline, filterable project cards, grouped skills, contact section
+- Downloadable one-page resume (`public/Sudharani_Bhavi_Resume.pdf`)
+- SEO: page title, meta description, Open Graph and JSON-LD structured data
+- Content lives in one file, `src/data.js`, so updates don't touch the components
 
-## Expanding the ESLint configuration
+## Run locally
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # production build in dist/
+npm run preview    # serve the production build
+```
+
+## Run with Docker
+
+```bash
+docker build -t portfolio .
+docker run -p 8080:80 portfolio   # http://localhost:8080
+```
+
+The image is a two-stage build: Node compiles the app, Nginx serves the static files
+with gzip, long-lived asset caching, security headers and an SPA fallback.
+
+## Deploy
+
+Netlify builds from `main` using `npm run build` and publishes `dist/`.
+
+## Project structure
+
+```
+src/
+  data.js            all site content
+  components/        Navbar, Hero, Experience, Projects, Skills, Contact, Footer
+  index.css          Tailwind import and a few custom effects
+public/              favicon, resume PDF, social preview image
+```
