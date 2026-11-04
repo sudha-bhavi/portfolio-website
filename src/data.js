@@ -153,18 +153,34 @@ export const projects = [
   },
 ];
 
-export const building = {
-  title: "JobTracker",
-  summary:
-    "A full-stack job application tracker I'm building in public: an ASP.NET Core API and a JavaScript UI in one repository.",
-  repo: "https://github.com/sudha-bhavi/JobTracker",
-  tech: ["ASP.NET Core", "JavaScript", "SQL"],
-};
+// Personal projects, shown above the work projects. `liveUrl` adds a "Live" link when it is set; leave it empty to hide the link.
+export const personalProjects = [
+  {
+    title: "VeilGate",
+    status: "Completed",
+    deployed: false,
+    summary:
+      "A multi-tenant gateway that masks PHI before text reaches a language model, built to HIPAA-style security practices. .NET 10 API and a React console on PostgreSQL with row-level security, a Kafka event pipeline, a hash-chained audit log, MFA, and CI with dependency and secret scanning. I ran my own penetration tests against it and fixed the five flaws they found, each with a regression test. Synthetic data only; not certified for real PHI and not deployed.",
+    repo: "https://github.com/sudha-bhavi/veilgate",
+    liveUrl: "",
+    tech: [".NET 10", "React", "PostgreSQL", "Kafka", "Docker", "GitHub Actions"],
+  },
+  {
+    title: "JobTracker",
+    status: "Completed and deployed",
+    deployed: true,
+    summary:
+      "A full-stack job application tracker: an ASP.NET Core API (JobTrackerApi) and a JavaScript UI (JobTrackerUi), built and shipped end to end.",
+    repo: "https://github.com/sudha-bhavi/JobTracker",
+    liveUrl: "",
+    tech: ["ASP.NET Core", "JavaScript", "SQL"],
+  },
+];
 
 export const skillCategories = [
   {
     title: "Back-End & Architecture",
-    skills: [".NET 8/9", ".NET Core", "ASP.NET Core Web API", "C#", "Entity Framework Core", "Dapper", "Microservices", "Event-Driven Architecture"],
+    skills: [".NET 8/9/10", ".NET Core", "ASP.NET Core Web API", "C#", "Entity Framework Core", "Dapper", "Microservices", "Event-Driven Architecture", "Kafka"],
   },
   {
     title: "Front-End",

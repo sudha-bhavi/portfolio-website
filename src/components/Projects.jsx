@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { projects, building } from "../data";
+import { projects, personalProjects } from "../data";
 import { GithubIcon, ArrowIcon } from "./Icons";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
@@ -17,34 +17,40 @@ export default function Projects() {
           Production systems I designed and delivered. Employer projects are described at a high level.
         </SectionHeading>
 
-        {/* Currently building */}
-        <Reveal className="mb-10">
-          <a
-            href={building.repo}
-            target="_blank"
-            rel="noreferrer"
-            className="card-glow group block rounded-2xl border border-blue-500/30 bg-gradient-to-br from-blue-500/10 via-slate-900 to-cyan-500/10 p-6 sm:p-7"
-          >
-            <div className="flex flex-wrap items-center gap-3 mb-3">
-              <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold uppercase tracking-wide">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Building now
-              </span>
-              <span className="text-xs text-slate-500 uppercase tracking-wider">Personal project</span>
-            </div>
-            <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <GithubIcon /> {building.title}
-              <ArrowIcon width={16} height={16} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition" />
-            </h3>
-            <p className="mt-2 text-sm text-slate-300 max-w-2xl leading-relaxed">{building.summary}</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {building.tech.map((t) => (
-                <span key={t} className="bg-slate-950/70 text-xs px-2.5 py-1 rounded text-slate-300 border border-slate-700">
-                  {t}
-                </span>
-              ))}
-            </div>
-          </a>
-        </Reveal>
+        {/* Personal projects */}
+        <div className="mb-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {personalProjects.map((proj, idx) => (
+            <Reveal key={proj.title} delay={idx * 80}>
+              <article className="card-glow h-full rounded-2xl border border-blue-500/30 bg-gradient-to-br from-blue-500/10 via-slate-900 to-cyan-500/10 p-6 sm:p-7 flex flex-col">
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold uppercase tracking-wide">
+                    {proj.status}
+                  </span>
+                  <span className="text-xs text-slate-500 uppercase tracking-wider">Personal project</span>
+                </div>
+                <h3 className="text-xl font-bold text-white">{proj.title}</h3>
+                <p className="mt-2 text-sm text-slate-300 leading-relaxed">{proj.summary}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {proj.tech.map((t) => (
+                    <span key={t} className="bg-slate-950/70 text-xs px-2.5 py-1 rounded text-slate-300 border border-slate-700">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-5 flex flex-wrap gap-4 text-sm font-medium">
+                  <a href={proj.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-blue-300 hover:text-blue-200">
+                    <GithubIcon /> Source on GitHub <ArrowIcon width={14} height={14} />
+                  </a>
+                  {proj.liveUrl && (
+                    <a href={proj.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-emerald-300 hover:text-emerald-200">
+                      Live site <ArrowIcon width={14} height={14} />
+                    </a>
+                  )}
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
 
         {/* Filter */}
         <div className="flex flex-wrap gap-2 mb-8" role="tablist" aria-label="Filter projects">

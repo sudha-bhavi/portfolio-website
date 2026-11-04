@@ -92,10 +92,10 @@ export default function Hero() {
                 <dd className="text-slate-200 font-medium">RPM · eCQM/HEDIS · ONC testing · HIPAA</dd>
               </div>
               <div>
-                <dt className="text-slate-500">Now building</dt>
+                <dt className="text-slate-500">Personal projects</dt>
                 <dd>
                   <a href="#projects" className="text-blue-300 hover:text-blue-200 font-medium">
-                    JobTracker, a full-stack app in public →
+                    VeilGate and JobTracker, both completed →
                   </a>
                 </dd>
               </div>
