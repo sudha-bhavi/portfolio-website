@@ -166,14 +166,98 @@ export const personalProjects = [
     tech: [".NET 10", "React", "PostgreSQL", "Kafka", "Docker", "GitHub Actions"],
   },
   {
+    title: "CareerCopilot",
+    status: "Completed",
+    deployed: true,
+    summary:
+      "A job-search workspace: a drag-and-drop application pipeline with follow-up reminders and a dashboard, a resume-to-job-description skill matcher, and a city job search through Adzuna's API that ranks open jobs by how well they fit a pasted resume, with one-click save to the tracker. .NET 10 minimal API with EF Core and PostgreSQL, JWT sign-in with rate limiting, and a React and TypeScript UI, shipped as one Docker image on Render with GitHub Actions CI. Single-user app, so the hosted demo sits behind a login.",
+    repo: "https://github.com/sudha-bhavi/careercopilot",
+    liveUrl: "https://careercopilot-lsm4.onrender.com",
+    tech: [".NET 10", "React", "TypeScript", "PostgreSQL", "Docker", "GitHub Actions"],
+  },
+  {
     title: "JobTracker",
     status: "Completed and deployed",
     deployed: true,
     summary:
       "A full-stack job application tracker: an ASP.NET Core API (JobTrackerApi) and a JavaScript UI (JobTrackerUi), built and shipped end to end.",
     repo: "https://github.com/sudha-bhavi/JobTracker",
-    liveUrl: "",
+    liveUrl: "https://jobtrackerui.netlify.app/",
     tech: ["ASP.NET Core", "JavaScript", "SQL"],
+  },
+];
+
+// Case studies. Each section is optional: a heading is shown only when its field has content.
+// `facts` is a short list of numbers or limits shown as chips.
+export const caseStudies = [
+  {
+    id: "veilgate",
+    title: "VeilGate: keeping PHI away from a language model",
+    kind: "Personal project",
+    role: "Sole designer and developer",
+    stack: [".NET 10", "React", "PostgreSQL", "Kafka", "Docker"],
+    facts: ["207 commits", "1,200+ automated tests", "6 pen-test findings, 5 fixed and retested", "Synthetic data only"],
+    problem:
+      "Clinics want to use LLMs on clinical notes, but sending names, dates and ID numbers to an outside model provider is a HIPAA risk. I wanted to see what it takes to put a safety layer in front of the model: find the PHI, replace it by policy, send only the sanitized text, and restore the original values in the answer.",
+    decisions: [
+      {
+        title: "Tenant isolation lives in the database",
+        body: "Every tenant table uses PostgreSQL row-level security, so a bug in application code cannot read another organisation's rows. The pen tests check this from both sides.",
+      },
+      {
+        title: "Protection is reversible, and keys are per tenant",
+        body: "Values are encrypted with AES-256-GCM under a per-tenant data key and swapped for tokens, so the model never sees them but the user still gets a complete answer.",
+      },
+      {
+        title: "Policies need a second person",
+        body: "A policy goes draft, validate, submit, approve by a different person, publish. Every version is kept, can be compared and can be rolled back.",
+      },
+      {
+        title: "Audit log you can check for tampering",
+        body: "An append-only, hash-chained log records counts and ids, never text, so reviewers can verify the chain without the log becoming a second copy of PHI.",
+      },
+      {
+        title: "Gateway calls do not wait on reporting",
+        body: "Each call is announced through a transactional outbox to Kafka, with retries, a dead-letter topic and an idempotent consumer that builds the dashboard.",
+      },
+    ],
+    testing:
+      "I wrote my own penetration test scripts and ran them against my own build. Six findings, one High, two Medium, two Low and one Info that I accepted with an owner and reason. The High one: sending many wrong authenticator codes at the same instant got past the five-attempts-then-lock rule. Most findings were races, where two requests read the same state before either saved. The fix pattern was the same each time: let the database decide the winner with one atomic statement. The regression test fires 20 simultaneous requests at a real PostgreSQL and requires exactly one winner.",
+    outcome:
+      "CI builds and tests the backend and console, builds the container images, validates the deployment files and runs a backup-and-restore drill. Limits, stated plainly: all data is synthetic, it is not certified for real PHI, it runs on one machine, and the pen test is only partly run.",
+    lesson:
+      "Check-then-act in application code is not safe under concurrency. Anything that must happen once, such as a one-time code or a token rotation, should be decided by the database.",
+    repo: "https://github.com/sudha-bhavi/veilgate",
+  },
+  {
+    id: "bridge-sync",
+    title: "Bridge SYNC: remote patient monitoring for home-based care",
+    kind: "Work project, The Garage India",
+    role: "Associate Technical Lead, architecture and delivery",
+    stack: [".NET Core", "ASP.NET Core Web API", "React JS", "Azure App Service", "SQL Server", "HIPAA"],
+    facts: ["Multi-tenant platform", "Real-time device readings", "HIPAA-compliant"],
+    problem:
+      "Bridge is a multi-tenant population health and value-based care platform. Care teams who look after patients at home needed to know whether each patient's devices were actually sending readings, see how the readings changed over time, and be alerted when something needed attention.",
+    decisions: [
+      {
+        title: "Small services, not one large API",
+        body: "I architected SYNC as .NET Core microservices on Azure App Service with SQL Server, so device data, patient messaging and alerts could change and scale on their own.",
+      },
+      {
+        title: "Transmission tracking as a feature",
+        body: "Real-time tracking of whether each device is transmitting, next to historical reading plots, so a silent device is noticed as quickly as an abnormal reading.",
+      },
+      {
+        title: "Alerts the care team can tune",
+        body: "Customizable care team alerts, plus device inventory management, so clinics set their own thresholds instead of living with fixed rules.",
+      },
+      {
+        title: "Built for PHI from day one",
+        body: "Patient data and device readings sit under HIPAA requirements, in a platform shared by many organisations, so tenant separation and access control shaped the design.",
+      },
+    ],
+    outcome:
+      "I led the engineering delivery for SYNC from early patient messaging services through to the full home-care workflow, and mentored the engineers on microservice design, SOLID and clean-code practices. Employer details are kept at a high level.",
   },
 ];
 
