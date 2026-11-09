@@ -41,6 +41,11 @@ export default function Projects() {
                   <a href={proj.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-blue-300 hover:text-blue-200">
                     <GithubIcon /> Source on GitHub <ArrowIcon width={14} height={14} />
                   </a>
+                  {proj.demoUrl && (
+                    <a href={proj.demoUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-emerald-300 hover:text-emerald-200">
+                      Watch the demo <ArrowIcon width={14} height={14} />
+                    </a>
+                  )}
                   {proj.liveUrl && (
                     <a href={proj.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-emerald-300 hover:text-emerald-200">
                       Live site <ArrowIcon width={14} height={14} />

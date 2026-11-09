@@ -13,7 +13,7 @@ Senior .NET engineer in Cincinnati, OH. 6+ years building healthcare and FinTech
 
 **Things I've built**
 
-- **[VeilGate](https://github.com/sudha-bhavi/veilgate)** – a multi-tenant gateway that masks PHI before text reaches a language model. .NET 10, React, PostgreSQL with row-level security, Kafka, MFA and a hash-chained audit log. I ran my own penetration tests on it and fixed the five flaws they found, each with a regression test. Synthetic data only; not deployed.
+- **[VeilGate](https://github.com/sudha-bhavi/veilgate)** ([90-second demo](https://youtu.be/4_N9H2Wub1o)) – a multi-tenant gateway that masks PHI before text reaches a language model. .NET 10, React, PostgreSQL with row-level security, Kafka, MFA and a hash-chained audit log. I ran my own penetration tests on it and fixed the five flaws they found, each with a regression test. Synthetic data only; not deployed.
 - **[JobTracker](https://github.com/sudha-bhavi/JobTracker)** – a full-stack job application tracker (ASP.NET Core API and JavaScript UI), completed and deployed.
 - **[Portfolio](https://sudhabhavi-portfolio.netlify.app/)** – React, Vite and Tailwind, deployed on Netlify.
 
@@ -26,7 +26,7 @@ Senior .NET engineer in Cincinnati, OH. 6+ years building healthcare and FinTech
 
 - **Name:** VeilGate
 - **Dates:** Jun 2025 – present (or the months you worked on it)
-- **Link:** https://github.com/sudha-bhavi/veilgate
+- **Link:** https://youtu.be/4_N9H2Wub1o (demo video; put the GitHub link https://github.com/sudha-bhavi/veilgate in the description, and add the video under Featured too)
 - **Description:**
 
 > A multi-tenant gateway that masks PHI before text reaches a language model, built as a security and architecture project. .NET 10 API and React console on PostgreSQL with row-level security, a transactional-outbox Kafka pipeline, MFA, and a hash-chained audit log. CI runs build, tests, dependency audit and secret scanning. I ran my own penetration tests against it and fixed the five flaws they found (races on one-time codes, refresh-token rotation and account lockout, a server error on bad input, a missing security event), each with a regression test. Synthetic data only; not certified for real PHI and not deployed.

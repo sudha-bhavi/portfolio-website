@@ -163,6 +163,7 @@ export const personalProjects = [
       "A multi-tenant gateway that masks PHI before text reaches a language model, built to HIPAA-style security practices. .NET 10 API and a React console on PostgreSQL with row-level security, a Kafka event pipeline, a hash-chained audit log, MFA, and CI with dependency and secret scanning. I ran my own penetration tests against it and fixed the five flaws they found, each with a regression test. Synthetic data only; not certified for real PHI and not deployed.",
     repo: "https://github.com/sudha-bhavi/veilgate",
     liveUrl: "",
+    demoUrl: "https://youtu.be/4_N9H2Wub1o",
     tech: [".NET 10", "React", "PostgreSQL", "Kafka", "Docker", "GitHub Actions"],
   },
   {
