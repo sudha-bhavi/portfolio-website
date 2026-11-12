@@ -59,6 +59,65 @@ body {
   box-shadow: 0 12px 40px -12px rgba(59, 130, 246, 0.35);
 }
 
+/* Project screenshot showcase */
+.showcase-frame {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+.showcase-shine {
+  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.14), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.showcase:hover .showcase-shine { opacity: 1; }
+.showcase-float { animation: showcase-float 6s ease-in-out infinite; }
+.showcase:hover .showcase-float { animation-play-state: paused; }
+.showcase-img { animation: showcase-fade 0.45s ease; }
+
+@keyframes showcase-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes showcase-fade {
+  from { opacity: 0; transform: scale(1.03); }
+  to { opacity: 1; transform: none; }
+}
+
+/* "Watch the demo" pill on the video slide */
+.video-play { animation: video-pulse 2.4s ease-in-out infinite; }
+@keyframes video-pulse {
+  0%, 100% { box-shadow: 0 8px 24px -6px rgba(37, 99, 235, 0.5); }
+  50% { box-shadow: 0 8px 36px -2px rgba(37, 99, 235, 0.85); }
+}
+
+/* Architecture diagrams: slow flow along the arrows */
+.flow-line { stroke-dasharray: 6 6; animation: flow-dash 1.4s linear infinite; }
+@keyframes flow-dash { to { stroke-dashoffset: -24; } }
+
+/* Stat rings and chart bars fill in once. With reduced motion they simply start full. */
+.ring-draw { animation: ring-in 1.4s ease-out; }
+@keyframes ring-in {
+  from { stroke-dasharray: 0 var(--c); }
+  to { stroke-dasharray: var(--len) var(--c); }
+}
+.bar-grow { transform-origin: left; animation: bar-in 1s ease-out; }
+@keyframes bar-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Hero: the masking example */
+.mask-token { border-radius: 4px; padding: 0 4px; color: inherit; }
+.mask-before { background: rgba(245, 158, 11, 0.18); color: #fcd34d; animation: token-pulse 3.2s ease-in-out infinite; }
+.mask-after { background: rgba(16, 185, 129, 0.16); color: #6ee7b7; }
+.mask-arrow { display: inline-block; animation: arrow-bob 1.6s ease-in-out infinite; }
+@keyframes token-pulse {
+  0%, 100% { background: rgba(245, 158, 11, 0.14); }
+  50% { background: rgba(245, 158, 11, 0.32); }
+}
+@keyframes arrow-bob {
+  0%, 100% { transform: translateY(-1px); }
+  50% { transform: translateY(3px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
