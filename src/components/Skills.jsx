@@ -1,5 +1,4 @@
 import { skillCategories, awards, education } from "../data";
-import TechUsageChart from "./charts/TechUsageChart";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import SkillIcon from "./SkillIcons";
@@ -12,10 +11,6 @@ export default function Skills() {
         <SectionHeading eyebrow="Skills" title="Technical expertise">
           The tools I use day to day, grouped by what they do.
         </SectionHeading>
-
-        <Reveal>
-          <TechUsageChart />
-        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skillCategories.map((cat, idx) => (
