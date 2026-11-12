@@ -1,5 +1,7 @@
 import { profile, stats } from "../data";
+import StatRing from "./charts/StatRing";
 import { GithubIcon, LinkedinIcon, DownloadIcon, ArrowIcon, PinIcon } from "./Icons";
+import MaskDemo from "./MaskDemo";
 import Reveal from "./Reveal";
 
 export default function Hero() {
@@ -17,9 +19,12 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={80}>
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
+            <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight text-white leading-[1.05]">
               Hi, I'm {profile.name.split(" ")[0]}.
-              <span className="block gradient-text mt-1">{profile.headline}</span>
+              {/* The headline is a step down from the name, so the eye reads name first, then what you do. */}
+              <span className="block gradient-text mt-4 text-2xl sm:text-[2rem] font-bold tracking-tight leading-snug max-w-xl">
+                {profile.headline}
+              </span>
             </h1>
           </Reveal>
 
@@ -69,13 +74,14 @@ export default function Hero() {
           </Reveal>
         </div>
 
+        <div className="space-y-4">
         <Reveal delay={200}>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/70 backdrop-blur p-6 shadow-2xl shadow-blue-950/40">
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">At a glance</p>
             <dl className="space-y-4 text-sm">
               <div>
                 <dt className="text-slate-500">Focus</dt>
-                <dd className="text-slate-200 font-medium">Healthcare IT and interoperability</dd>
+                <dd className="text-slate-200 font-medium">.NET and full-stack engineering</dd>
               </div>
               <div>
                 <dt className="text-slate-500">Core stack</dt>
@@ -89,30 +95,43 @@ export default function Hero() {
               </div>
               <div>
                 <dt className="text-slate-500">Domain experience</dt>
-                <dd className="text-slate-200 font-medium">RPM · eCQM/HEDIS · ONC testing · HIPAA</dd>
+                <dd className="text-slate-200 font-medium">RPM · eCQM/HEDIS · TCM · HIPAA</dd>
               </div>
               <div>
                 <dt className="text-slate-500">Personal projects</dt>
                 <dd>
                   <a href="#projects" className="text-blue-300 hover:text-blue-200 font-medium">
-                    VeilGate and JobTracker, both completed →
+                    VeilGate, CareerCopilot and JobTracker, all completed →
                   </a>
                 </dd>
               </div>
             </dl>
           </div>
         </Reveal>
+        <Reveal delay={280}>
+          <MaskDemo />
+        </Reveal>
+        </div>
       </div>
 
       <div className="relative max-w-6xl mx-auto mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((s, i) => (
+        {stats.map((s, i) => {
+          // Stats that are already percentages (35%, 40%) get a ring; the rest stay as plain numbers.
+          const percent = /^(\d+)%$/.exec(s.value)?.[1];
+          return (
           <Reveal key={s.label} delay={i * 80}>
-            <div className="h-full rounded-xl border border-slate-800 bg-slate-900/50 p-5">
+            <div className="relative h-full rounded-xl border border-slate-800 bg-slate-900/50 p-5">
+              {percent && (
+                <div className="absolute right-4 top-4">
+                  <StatRing percent={Number(percent)} />
+                </div>
+              )}
               <p className="text-3xl sm:text-4xl font-extrabold gradient-text">{s.value}</p>
               <p className="mt-1.5 text-sm text-slate-400 leading-snug">{s.label}</p>
             </div>
           </Reveal>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

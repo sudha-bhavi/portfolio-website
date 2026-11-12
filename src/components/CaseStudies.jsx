@@ -1,7 +1,16 @@
 import { caseStudies } from "../data";
+import FindingsChart from "./charts/FindingsChart";
+import BridgeSyncDiagram from "./diagrams/BridgeSyncDiagram";
+import VeilGateDiagram from "./diagrams/VeilGateDiagram";
 import { GithubIcon, ArrowIcon } from "./Icons";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
+
+// A case study opts in with `diagram: "<key>"` in data.js.
+const diagrams = {
+  veilgate: VeilGateDiagram,
+  "bridge-sync": BridgeSyncDiagram,
+};
 
 function Block({ label, children }) {
   return (
@@ -46,6 +55,11 @@ export default function CaseStudies() {
                   </ul>
                 )}
 
+                {cs.diagram && diagrams[cs.diagram] && (() => {
+                  const Diagram = diagrams[cs.diagram];
+                  return <Diagram />;
+                })()}
+
                 <div className="mt-6 space-y-6">
                   {cs.problem && <Block label="The problem">{cs.problem}</Block>}
 
@@ -66,6 +80,7 @@ export default function CaseStudies() {
                   )}
 
                   {cs.testing && <Block label="Testing it">{cs.testing}</Block>}
+                  {cs.findings && <FindingsChart levels={cs.findings.levels} note={cs.findings.note} />}
                   {cs.outcome && <Block label="Where it stands">{cs.outcome}</Block>}
                   {cs.lesson && <Block label="What I took from it">{cs.lesson}</Block>}
                 </div>

@@ -1,10 +1,20 @@
 import { useState } from "react";
 import { projects, personalProjects } from "../data";
 import { GithubIcon, ArrowIcon } from "./Icons";
+import ProjectShowcase from "./ProjectShowcase";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
 const tabs = ["All", "Healthcare", "Cloud & Data"];
+
+// Shown in the mock browser's address bar, e.g. "jobtrackerui.netlify.app".
+const hostOf = (url) => {
+  try {
+    return new URL(url).host;
+  } catch {
+    return "";
+  }
+};
 
 export default function Projects() {
   const [tab, setTab] = useState("All");
@@ -28,6 +38,9 @@ export default function Projects() {
                   </span>
                   <span className="text-xs text-slate-500 uppercase tracking-wider">Personal project</span>
                 </div>
+                {proj.images?.length > 0 && (
+                  <ProjectShowcase images={proj.images} host={proj.imageHost ?? hostOf(proj.liveUrl || proj.repo)} />
+                )}
                 <h3 className="text-xl font-bold text-white">{proj.title}</h3>
                 <p className="mt-2 text-sm text-slate-300 leading-relaxed">{proj.summary}</p>
                 <div className="mt-4 flex flex-wrap gap-2">

@@ -9,7 +9,7 @@ export default function Contact() {
         <p className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-2">Contact</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Let's build something reliable.</h2>
         <p className="mt-4 text-slate-400 leading-relaxed">
-          I'm looking for senior .NET and full-stack roles, especially in healthcare IT. The fastest way to reach me is email.
+          I'm looking for senior .NET and full-stack roles. The fastest way to reach me is email.
         </p>
 
         <a

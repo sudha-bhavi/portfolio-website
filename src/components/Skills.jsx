@@ -1,6 +1,9 @@
 import { skillCategories, awards, education } from "../data";
+import TechUsageChart from "./charts/TechUsageChart";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
+import SkillIcon from "./SkillIcons";
+import TechBadge from "./TechBadge";
 
 export default function Skills() {
   return (
@@ -10,17 +13,25 @@ export default function Skills() {
           The tools I use day to day, grouped by what they do.
         </SectionHeading>
 
+        <Reveal>
+          <TechUsageChart />
+        </Reveal>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skillCategories.map((cat, idx) => (
             <Reveal key={cat.title} delay={(idx % 2) * 80}>
               <div className="h-full bg-slate-900 p-6 rounded-xl border border-slate-800">
-                <h3 className="text-lg font-semibold text-blue-400 mb-4">{cat.title}</h3>
+                <h3 className="flex items-center gap-2.5 text-lg font-semibold text-blue-400 mb-4">
+                  <SkillIcon title={cat.title} />
+                  {cat.title}
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="bg-slate-800 px-3 py-1 rounded-full text-sm font-medium text-slate-300 border border-slate-700 hover:border-blue-500/50 hover:text-white transition-colors"
+                      className="inline-flex items-center bg-slate-800 pl-2 pr-3 py-1 rounded-full text-sm font-medium text-slate-300 border border-slate-700 hover:border-blue-500/50 hover:text-white transition-colors"
                     >
+                      <TechBadge skill={skill} />
                       {skill}
                     </span>
                   ))}

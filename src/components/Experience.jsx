@@ -1,4 +1,5 @@
 import { experience } from "../data";
+import CareerTimeline from "./charts/CareerTimeline";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
@@ -9,6 +10,10 @@ export default function Experience() {
         <SectionHeading eyebrow="Experience" title="Where I've shipped">
           Six-plus years across healthcare and data platforms, growing from trainee programmer to technical lead.
         </SectionHeading>
+
+        <Reveal>
+          <CareerTimeline />
+        </Reveal>
 
         <div className="space-y-12">
           {experience.map((job) => (
