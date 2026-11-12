@@ -1,6 +1,6 @@
 # Sudharani Bhavi | Portfolio
 
-Personal portfolio for a Senior .NET engineer working in healthcare IT.
+Personal portfolio for a Senior .NET and full-stack engineer.
 **Live site:** https://sudhabhavi-portfolio.netlify.app/
 
 ## Stack

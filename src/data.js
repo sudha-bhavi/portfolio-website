@@ -4,8 +4,8 @@ export const profile = {
   name: "Sudharani Bhavi",
   // Use the exact titles from your resume everywhere.
   title: "Associate Technical Lead · Senior Software Engineer",
-  headline: "I build healthcare platforms that scale.",
-  bio: "6+ years building HIPAA-compliant healthcare and FinTech systems with .NET 8/9, React and Azure, from remote patient monitoring microservices to eCQM and ONC compliance reporting.",
+  headline: "I build software that holds up when it matters, at any scale.",
+  bio: "6+ years building enterprise and HIPAA-compliant systems with .NET 8/9, React and Azure, from remote patient monitoring microservices to eCQM reporting.",
   location: "Cincinnati, OH",
   email: "sudhabhavi383@gmail.com",
   github: "https://github.com/sudha-bhavi",
@@ -31,7 +31,7 @@ export const experience = [
         bullets: [
           "Led technical architecture and engineering delivery for Bridge, a multi-tenant population health and value-based care platform.",
           "Architected SYNC remote patient monitoring microservices (.NET Core, Azure, SQL Server) for real-time medical device readings.",
-          "Supported ONC Real World Testing and eCQM reporting; optimized HEDIS care-gap pipelines with EF Core and Redis, reducing API latency by 35%.",
+          "Supported eCQM reporting; optimized HEDIS care-gap pipelines with EF Core and Redis, reducing API latency by 35%.",
         ],
       },
       {
@@ -89,13 +89,13 @@ export const projects = [
     tech: [".NET Core", "ASP.NET Core Web API", "React JS", "Azure App Service", "SQL Server", "HIPAA"],
   },
   {
-    title: "Bridge: eCQM, Public Reporting & ONC Compliance",
-    category: "Regulatory & Quality Certification",
+    title: "Bridge: eCQM & Public Reporting",
+    category: "Quality Reporting",
     org: "The Garage India",
     group: "Healthcare",
     summary:
-      "Managed technical delivery for Bridge eCQM, public reporting workflows, export documentation and ONC Real World Testing compliance (2023–2025 test plans and results) for certification readiness.",
-    tech: [".NET Core", "eCQM", "ONC Testing", "Public Reporting", "Export Engine", "SQL Server"],
+      "Managed technical delivery for Bridge eCQM, public reporting workflows and export documentation.",
+    tech: [".NET Core", "eCQM", "Public Reporting", "Export Engine", "SQL Server"],
   },
   {
     title: "Bridge: Population Health & Care Gaps",
@@ -164,6 +164,54 @@ export const personalProjects = [
     repo: "https://github.com/sudha-bhavi/veilgate",
     liveUrl: "",
     demoUrl: "https://youtu.be/4_N9H2Wub1o",
+    // Stills from the demo video. Synthetic data only. The address bar in the showcase says so.
+    imageHost: "localhost · read-only demo, sample data",
+    images: [
+      {
+        // A slide with `video` opens the video instead of the enlarge view.
+        src: "/projects/veilgate-demo-poster.jpg",
+        alt: "Title card of the VeilGate demo video: Stop patient data from reaching an AI model",
+        caption: "Demo video",
+        video: "https://youtu.be/4_N9H2Wub1o",
+        width: 1280,
+        height: 720,
+      },
+      {
+        src: "/projects/veilgate-policy.jpg",
+        alt: "VeilGate policy editor showing a HIPAA Safe Harbor policy written as YAML",
+        caption: "Policies as versioned YAML",
+        width: 1280,
+        height: 719,
+      },
+      {
+        src: "/projects/veilgate-playground.jpg",
+        alt: "VeilGate playground showing sensitive items found in a made-up patient note, and the masked text that leaves the gateway",
+        caption: "Detected, then masked by policy",
+        width: 1280,
+        height: 719,
+      },
+      {
+        src: "/projects/veilgate-audit.jpg",
+        alt: "VeilGate audit log with a message confirming all 65 events are in order and unchanged",
+        caption: "Tamper-evident audit log",
+        width: 1280,
+        height: 719,
+      },
+      {
+        src: "/projects/veilgate-dashboard.jpg",
+        alt: "VeilGate dashboard with request counts, items protected, latency and a requests-over-time chart",
+        caption: "Counts-only dashboard",
+        width: 1280,
+        height: 719,
+      },
+      {
+        src: "/projects/veilgate-security.jpg",
+        alt: "VeilGate security page listing active sign-in sessions with options to revoke them",
+        caption: "Session control and MFA",
+        width: 1280,
+        height: 719,
+      },
+    ],
     tech: [".NET 10", "React", "PostgreSQL", "Kafka", "Docker", "GitHub Actions"],
   },
   {
@@ -174,6 +222,30 @@ export const personalProjects = [
       "A job-search workspace: a drag-and-drop application pipeline with follow-up reminders and a dashboard, a resume-to-job-description skill matcher, and a city job search through Adzuna's API that ranks open jobs by how well they fit a pasted resume, with one-click save to the tracker. .NET 10 minimal API with EF Core and PostgreSQL, JWT sign-in with rate limiting, and a React and TypeScript UI, shipped as one Docker image on Render with GitHub Actions CI. Single-user app, so the hosted demo sits behind a login.",
     repo: "https://github.com/sudha-bhavi/careercopilot",
     liveUrl: "https://careercopilot-lsm4.onrender.com",
+    // Screenshots use made-up sample data and a fictional resume.
+    images: [
+      {
+        src: "/projects/careercopilot-board.png",
+        alt: "CareerCopilot pipeline board with applications in Saved, Applied, Interview, Offer and Rejected columns, and a summary row of counts",
+        caption: "Drag-and-drop pipeline with follow-up reminders",
+        width: 1440,
+        height: 1247,
+      },
+      {
+        src: "/projects/careercopilot-jobs.png",
+        alt: "CareerCopilot job search results for Cincinnati ranked by how well each posting fits a resume, with matched and missing skill tags",
+        caption: "City job search, ranked against your resume",
+        width: 1440,
+        height: 1200,
+      },
+      {
+        src: "/projects/careercopilot-match.png",
+        alt: "CareerCopilot resume match showing a 65 percent partial match with matched and missing skills",
+        caption: "Resume match: matched and missing skills",
+        width: 1440,
+        height: 770,
+      },
+    ],
     tech: [".NET 10", "React", "TypeScript", "PostgreSQL", "Docker", "GitHub Actions"],
   },
   {
@@ -184,6 +256,16 @@ export const personalProjects = [
       "A full-stack job application tracker: an ASP.NET Core API (JobTrackerApi) and a JavaScript UI (JobTrackerUi), built and shipped end to end.",
     repo: "https://github.com/sudha-bhavi/JobTracker",
     liveUrl: "https://jobtrackerui.netlify.app/",
+    // Add more shots to this list and a carousel appears automatically.
+    images: [
+      {
+        src: "/projects/jobtracker.png",
+        alt: "JobTracker dashboard showing application totals and a pipeline of tracked jobs with their statuses",
+        caption: "Dashboard and application pipeline",
+        width: 1440,
+        height: 640,
+      },
+    ],
     tech: ["ASP.NET Core", "JavaScript", "SQL"],
   },
 ];
@@ -193,11 +275,22 @@ export const personalProjects = [
 export const caseStudies = [
   {
     id: "veilgate",
+    diagram: "veilgate",
     title: "VeilGate: keeping PHI away from a language model",
     kind: "Personal project",
     role: "Sole designer and developer",
     stack: [".NET 10", "React", "PostgreSQL", "Kafka", "Docker"],
     facts: ["207 commits", "1,200+ automated tests", "6 pen-test findings, 5 fixed and retested", "Synthetic data only"],
+    // The same six findings the "Testing it" paragraph describes: one High, two Medium, two Low, one Info.
+    findings: {
+      levels: [
+        { label: "High", count: 1 },
+        { label: "Medium", count: 2 },
+        { label: "Low", count: 2 },
+        { label: "Info", count: 1 },
+      ],
+      note: "Five were fixed and retested. The Info finding was accepted with an owner and a reason.",
+    },
     problem:
       "Clinics want to use LLMs on clinical notes, but sending names, dates and ID numbers to an outside model provider is a HIPAA risk. I wanted to see what it takes to put a safety layer in front of the model: find the PHI, replace it by policy, send only the sanitized text, and restore the original values in the answer.",
     decisions: [
@@ -232,6 +325,7 @@ export const caseStudies = [
   },
   {
     id: "bridge-sync",
+    diagram: "bridge-sync",
     title: "Bridge SYNC: remote patient monitoring for home-based care",
     kind: "Work project, The Garage India",
     role: "Associate Technical Lead, architecture and delivery",
@@ -277,7 +371,7 @@ export const skillCategories = [
   },
   {
     title: "Healthcare & Leadership",
-    skills: ["ONC Real World Testing", "eCQM / HEDIS", "HIPAA", "RPM", "EHR/EMR integration", "Technical team leadership", "Mentoring", "Code reviews"],
+    skills: ["eCQM / HEDIS", "Transitional Care Management (TCM)", "HIPAA", "RPM", "EHR/EMR integration", "Technical team leadership", "Mentoring", "Code reviews"],
   },
 ];
 

@@ -9,7 +9,7 @@ Goes in a repository named exactly `sudha-bhavi` (a public repo with this name s
 ```markdown
 ### Hi, I'm Sudharani Bhavi
 
-Senior .NET engineer in Cincinnati, OH. 6+ years building healthcare and FinTech systems: remote patient monitoring microservices, ONC Real World Testing, eCQM/HEDIS reporting and HIPAA-compliant APIs on Azure and AWS.
+Senior .NET engineer in Cincinnati, OH. 6+ years building enterprise and healthcare systems: remote patient monitoring microservices, eCQM/HEDIS reporting, Transitional Care Management and HIPAA-compliant APIs on Azure and AWS.
 
 **Things I've built**
 
@@ -41,4 +41,4 @@ Senior .NET engineer in Cincinnati, OH. 6+ years building healthcare and FinTech
 
 ## LinkedIn: headline (optional)
 
-> Senior .NET Engineer | Healthcare & FinTech | .NET, React, Azure, Kafka
+> Senior .NET and Full-Stack Engineer | .NET, React, Azure, Kafka
